@@ -1,11 +1,9 @@
 import React  from "react";
 import Select from "react-select";
-//import PropTypes from "prop-types";
-
 
 const Options = ({options, onDropdownChange}) => {
     return <div>
-        <p>Categoria</p>
+        <h3>Categoría</h3>
         <Select
             value = {options.value}         
             options = {options}
