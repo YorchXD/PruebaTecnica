@@ -1,3 +1,0 @@
-Options +FollowSymLinks
-RewriteEngine On 
-RewriteRule ^([a-zA-Z0-9\s]*)$ poisAPI.php?filtro=$1
