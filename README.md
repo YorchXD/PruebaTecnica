@@ -116,3 +116,11 @@ La ejecución tanto de las APIs como de la aplicación principal se montaron en 
     &nbsp;
     ![Ver API de opciones en el navegador](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/PointsMap.PNG)
     &nbsp;
+    
+## Proceso para detener la ejecución de las imágenes
+
+Para detener las imágenes basta con utilizar el comando ```docker stop <CONTAINER ID>``` tal y como se muestra a continuación
+
+&nbsp;
+![Detener ejecución de APIs y la aplicación PointsMap](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/DetencionEjecucionImagenes.PNG)
+&nbsp;
