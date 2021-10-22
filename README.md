@@ -1,24 +1,55 @@
-PruebaTecnica
+# PruebaTecnica
 
-Consideración:
+## Consideración:
 
 La ejecución tanto de las APIs como de la aplicación principal se montaron en Windows 10, por lo que este instructivo solo se realiza para montarlo en este sistema operativo. En caso de tener otro sistema operativo se debe verificar que conflictos podría arrojar la aplicación al momento de montarla t resolverlos según sea el caso.
 
-Requerimientos:
+## Requerimientos:
 
 1. Instalar Docker para Windows.
+    1. Es posible que aparezcan errores al instalar docker en windows, pero se soluciona siguiendo el tutorial del siguiente enlace: https://www.vicolinker.net/docker-desktop-wsl2-installation-incomplete/
 2. Según el navegador que tenga debe realizar lo siguiente:
     1. Firefox: 
         1. Instalar la extensión que se encuentra en el siguiente enlace: https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/
-        2. Tras la instalación, en el navegador saldrá CORS desactivado tal como se muestra en la siguiente imagen: ![CORS en Firefox desactivado](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/FirefoxCorsDesactivado.PNG)
-        3. Para activar los CORS se debe hacer clic en el icono "CORS E" y cuando aparezca en verde significa que esta activado tal como se muestra en la siguiente imagen: ![CORS en Firefox activado](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/FirefoxCorsDesactivado.PNG)
-        
+        2. Tras la instalación de la extensión en el navegador, saldrá CORS desactivado tal como se muestra en la siguiente imagen: 
+        ![CORS en Firefox desactivado](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/FirefoxCorsDesactivado.PNG)
+        3. Para activar los CORS se debe hacer clic en el icono "CORS E" y cuando aparezca en verde significa que está activado tal como se muestra en la siguiente imagen: 
+        ![CORS en Firefox activado](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/FirefoxCorsActivado.PNG)
     2. Google Chrome:
-        1. Realizar una copia del acceso directo del navegador.
-        2. Hacer clic derecho sobre la copia del navegador seleccionar propiedades.
-        3. En "Destino" se debe agregar "--disable-web-security" quedando la direccion de la siguiente forma C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="C:/Chrome dev session" --disable-web-security
-        4. Para más información ver el video del siguiente enlace: https://www.youtube.com/watch?v=4QTcQfjlfoI
+        1. Instalar la extensión que se encuentra en el siguiente enlace: https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=es
+        2. Tras la instalación la instalación de la extensión en el navegador, este se encuentra icono de extensiones. Para acceder a la extensión se debe hacer clic en el icono anterior y desplegara todas las extensiones que tiene instaladas. Posteriormente debe seleccionar la extensión con nombre Access-Control-Allow-origin. En la siguiente imagen se puede apreciar el procedimiento:
+        ![CORS en Google Chome oculto](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/GoogleCors.PNG)
+        3. Una vez seleccionada la extensión se mostrará un recuadro con el icono de la extensión en gris y se puede observar que aparece un toggle que por defecto esta desactivado tal como se muestra en la siguiente imagen
+        ![CORS en Google Chrome desactivado](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/GoogleCorsDesactivado.PNG)
+        4. Para activar los CORS se debe hacer clic en el icono toggle y cuando el icono de la extensión aparezca en color significa que está activado tal como se muestra en la siguiente imagen: 
+        ![CORS en Google Chrome activado](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/GoogleCorsActivado.PNG)
 
+## Proceso para montar la aplicación
 
-
-
+1. Descargar el repositorio
+2. Abrir cmd de Windows tecla Windows + r
+3. Lo primero es montar las APIs:
+    1. Acceder por cmd a la carpeta API (con el comando ```cd <nombre de la carpeta>``` para ingresar a las carpetas y el comando dir para ver el contenido de la carpeta que actualmente se encuentra en cmd)
+    ![Ver contenido de la carpeta actual por el comando ```dir``` e ingresar a la carpeta por el comando ```cd```](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/AccesoCarpetaCMD.PNG)
+    2. Posteriormente se debe construir la imagen de Docker con el comando ```docker build -t <nombre de la etiqueta> .```
+    ![Comando de creación imagen de las APIs](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/ComandoInstalacionAPI.PNG)
+    ![Creación e instalación imagen de la APIs](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/ComandoInstalacionAPI.PNG)
+    3. Posteriormente se verifica si está creada la imagen con el comando ```docker images```
+    ![Verificación imagen de las APIs](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/VerificacionImagenAPI.PNG)
+    4. Ejecutar la imagen para poder acceder a las APIs se realiza con el comando ```docker run -p 80:80 -d <nombre de la imagen>```
+    ![Verificación imagen de las APIs](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/EjecucionImgenAPIs.PNG)
+    5. Para verificar si están ejecutándose las imágenes, se puede acceder en el navegador a la ruta ```localhost/APIOpciones``` y ```localhost/APIPois```
+    ![Ver API de opciones en el navegador](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/APIOpciones.PNG)
+    ![Ver API de Points en el navegador](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/APIPois.PNG)
+4. Lo segundo es montar la aplicación web y para ello se debe realizar los siguientes pasos:
+    1. Acceder por cmd a la carpeta PointsMap que es donde se encuentra la aplicación web (con el comando ```cd <nombre de la carpeta>``` para ingresar a las carpetas, con el comando ```dir``` es para ver el contenido de la carpeta que actualmente se encuentra en cmd y con ```cd ..``` es para volver a una carpeta anterior)
+    ![Ver contenido de la carpeta actual por el comando ```dir``` e ingresar a la carpeta por el comando ```cd``` o volver a una carpeta anterior con el comando ```cd ..```](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/AccederPointsMap.PNG)
+    2. Posteriormente se debe construir la imagen de docker con el comando ```docker build -t <nombre de la etiqueta> .```
+    ![Comando de creación imagen de PointsMap](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/ComandoInstalacionPointsMap.PNG)
+    ![Creación e instalación imagen de PointsMap](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/InstalacionPointsMap.PNG)
+    3. Posteriormente se verifica si está creada la imagen con el comando ```docker images```
+    ![Verificación imagen de PointsMap](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/VerificacionImagenPointsMap.PNG)
+    4. Ejecutar la imagen para poder acceder a la aplicación PointsMap se realiza con el comando ```docker run -p 3000:3000 -d <nombre de la imagen>```
+    ![Verificación imagen de la aplicación PointsMap](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/EjecucionImgenPointsMap.PNG)
+    5. Para verificar si están ejecutándose la imagen de la aplicación PointMap, se puede acceder en el navegador a la ruta ```localhost:3000```
+    ![Ver API de opciones en el navegador](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/PointsMap.PNG)
