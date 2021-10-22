@@ -60,10 +60,6 @@ La ejecución tanto de las APIs como de la aplicación principal se montaron en 
     ![Comando de creación imagen de las APIs](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/ComandoInstalacionAPI.PNG)
     &nbsp;
     
-    &nbsp;
-    ![Creación e instalación imagen de la APIs](https://github.com/YorchXD/PruebaTecnica/blob/docker/Images/ComandoInstalacionAPI.PNG)
-    &nbsp;
-    
     3. Posteriormente se verifica si está creada la imagen con el comando ```docker images```
     
     &nbsp;
