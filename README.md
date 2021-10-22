@@ -2,7 +2,7 @@
 
 ## Consideración:
 
-La ejecución tanto de las APIs como de la aplicación principal se montaron en Windows 10, por lo que este instructivo solo se realiza para montarlo en este sistema operativo. En caso de tener otro sistema operativo se debe verificar que conflictos podría arrojar la aplicación al momento de montarla t resolverlos según sea el caso.
+La ejecución tanto de las APIs como de la aplicación principal se montaron en Windows 10, por lo que este instructivo solo se realiza para montarlo en este sistema operativo. En caso de tener otro sistema operativo se debe verificar que conflictos podría arrojar la aplicación al momento de montarla resolverlos según sea el caso.
 
 ## Requerimientos:
 
